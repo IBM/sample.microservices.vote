@@ -53,7 +53,7 @@ ibm-cloudant-dev:
 
   ## global persistence parameters
   persistence:
-    enabled: true
+    enabled: false
     useDynamicProvisioning: false
 
   databasePVC:
