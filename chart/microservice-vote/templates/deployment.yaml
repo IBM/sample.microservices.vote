@@ -89,7 +89,7 @@ spec:
                 name: cloudant-secret
                 key: dbPassword
           - name: dbUrl
-            value: http://{{ template "common.fullname" . }}-ibm-cloudant-dev
+            value: http://{{ template "fullname" . }}-ibm-cloudant-dev
           - name: USERNAME
             value: admin
           - name: PASSWORD
