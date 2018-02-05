@@ -1,15 +1,17 @@
-{{ if and (ne .Release.IsInstall false) (ne .Values.test true) }}
+{{ if index .Values "ibm-cloudant-dev" "persistence.useDynamicProvisioning" }}
+{{ else }}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: cloudant-pv
+  name: cloudant-pvc
   labels:
     type: local
 spec:
   capacity:
-    storage: 4Gi
+    storage: {{ index .Values "ibm-cloudant-dev" "databasePVC.size" }}
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: "/var/cloudant"
-{{ end }}
+{{ end }}    
+
