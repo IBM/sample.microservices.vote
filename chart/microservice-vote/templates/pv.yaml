@@ -8,9 +8,9 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 4Gi
+    storage: 3Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: "/var/cloudant"
 {{ end }}    
