@@ -1,6 +1,5 @@
 dependencies:
 - name: ibm-cloudant-dev
-  alias: ibmcloudantdev
   version: 1.0.2
   repository: https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
   
