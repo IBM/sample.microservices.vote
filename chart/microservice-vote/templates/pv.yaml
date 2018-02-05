@@ -8,7 +8,7 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 3Gi
+    storage: {{ index .Values "ibm-cloudant-dev" "databasePVC.size" }}
   accessModes:
     - ReadWriteOnce
   hostPath:
