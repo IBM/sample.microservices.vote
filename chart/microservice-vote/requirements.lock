@@ -2,5 +2,5 @@ dependencies:
 - name: ibm-cloudant-dev
   repository: https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
   version: 1.0.2
-digest: sha256:e449b4ab64b752df8e5d60ccd76433ffc16a1ecafdf6ec301a721646f29e11cb
-generated: 2018-02-02T14:19:05.676929135-05:00
+digest: sha256:8fa4ffed005471ea9661f37ed9f3713a77ca7937a7cac2fdf792752004cd1024
+generated: 2018-02-02T17:13:27.429353291-05:00
