@@ -57,10 +57,8 @@ spec:
               secretKeyRef:
                 name: cloudant-secret
                 key: dbPassword
-          - name: dbHost
-            value: $CLOUDANT_SERVICE_SERVICE_HOST
-          - name: dbPort
-            value: $CLOUDANT_SERVICE_SERVICE_PORT
+          - name: dbUrl
+            value: "http://{{ .Release.Name | trunc 46 | trimSuffix "-" }}-ibm-cloudant-dev"
           - name: USERNAME
             value: admin
           - name: PASSWORD
@@ -75,8 +73,6 @@ spec:
               secretKeyRef:
                 name: mb-truststore-password
                 key: password
-        command: ["/bin/sh","-c"]
-        args: ["if [ ! -z $dbPassword ]; then export dbUrl=http://$CLOUDANT_SERVICE_SERVICE_HOST:$CLOUDANT_SERVICE_SERVICE_PORT; exec /opt/ibm/wlp/bin/server run defaultServer; fi;"]
         volumeMounts:
         - name: keystore
           mountPath: /etc/wlp/config/keystore
