@@ -1,4 +1,5 @@
-{{ if index .Values "ibm-cloudant-dev" "persistence.useDynamicProvisioning" }}
+{{ if index .Values "ibm-cloudant-dev" "persistence" "enabled" }}
+{{ if index .Values "ibm-cloudant-dev" "persistence" "useDynamicProvisioning" }}
 {{ else }}
 kind: PersistentVolume
 apiVersion: v1
@@ -8,10 +9,11 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: {{ index .Values "ibm-cloudant-dev" "databasePVC.size" }}
+    storage: {{ index .Values "ibm-cloudant-dev" "databasePVC" "size" }}
   accessModes:
     - ReadWriteOnce
   hostPath:
     path: "/var/cloudant"
 {{ end }}    
-
+{{ else }}
+{{ end }}
