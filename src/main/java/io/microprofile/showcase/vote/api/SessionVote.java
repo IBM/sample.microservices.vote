@@ -39,6 +39,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
+import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Metered;
 
@@ -118,7 +119,11 @@ public class SessionVote {
     @Produces(APPLICATION_JSON)
     @Counted(name="io.microprofile.showcase.vote.api.SessionVote.getAllAttendees.monotonic.absolute(true)",monotonic=true,absolute=true,tags="app=vote")
     public Collection<Attendee> getAllAttendees() {
-        return selectedAttendeeDAO.getAllAttendees();
+        Collection<Attendee> attendees = selectedAttendeeDAO.getAllAttendees();
+        if(attendees == null){
+            throw new RuntimeException("There must be attendess to run the meetings.");
+        }
+        return attendees;
     }
 
     @GET

@@ -2,7 +2,7 @@
 
   <!-- Enable features -->
   <featureManager>
-    <feature>microProfile-1.2</feature>
+    <feature>microProfile-2.1</feature>
   </featureManager>
 
   <httpEndpoint id="defaultHttpEndpoint"
@@ -10,7 +10,8 @@
         httpPort="9080"
         httpsPort="9443" />
 
-  <quickStartSecurity userName="${env.USERNAME}" userPassword="${env.PASSWORD}"/>
+  <keyStore id="defaultKeyStore" password="mpKeystore"/>
+  <mpMetrics authentication="false"/>
 
   <webApplication location="vote.war" contextRoot="/vote"/>
 
