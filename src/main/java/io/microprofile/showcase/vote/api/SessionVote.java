@@ -111,7 +111,7 @@ public class SessionVote {
     @Path("/attendee/retries")
     @Produces(APPLICATION_JSON)
     @Counted(name="io.microprofile.showcase.vote.api.SessionVote.getAllAttendees.monotonic.absolute",monotonic=true,absolute=true,tags="app=vote")
-    @Retry
+    @Retry(maxRetries = 5, maxDuration= 1000, retryOn = {Exception.class})
     public Collection<Attendee> getAllAttendeesRetries() {
         Collection<Attendee> attendees = selectedAttendeeDAO.getAllAttendees();
         if(attendees == null){
